@@ -20,7 +20,6 @@ from dataclasses import dataclass
 class SlotInRung:
     """
     Used to communicate slot positions and content for them
-
     """
 
     rung_index: int  # 0 is lowest rung
