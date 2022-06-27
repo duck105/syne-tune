@@ -125,6 +125,9 @@ class DifferentialEvolutionHyperbandBracketManager(SynchronousHyperbandBracketMa
         )
         return bracket_id
 
+    def size_of_current_rung(self, bracket_id: int) -> int:
+        return self._brackets[bracket_id].size_of_current_rung()
+
     def trial_id_from_parent_slot(
         self, bracket_id: int, level: int, slot_index: int
     ) -> int:

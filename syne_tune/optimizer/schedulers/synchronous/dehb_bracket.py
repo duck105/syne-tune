@@ -73,6 +73,9 @@ class DifferentialEvolutionHyperbandBracket(SynchronousBracket):
     ) -> (List[Tuple[Optional[int], Optional[float]]], int):
         return self._rungs[self.current_rung]
 
+    def size_of_current_rung(self) -> int:
+        return len(self._current_rung_and_level()[0])
+
     def trial_id_for_slot(self, rung_index: int, slot_index: int) -> int:
         rung, _ = self._rungs[rung_index]
         return rung[slot_index][0]
