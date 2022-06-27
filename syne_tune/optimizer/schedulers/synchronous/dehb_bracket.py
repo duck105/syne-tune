@@ -11,12 +11,9 @@
 # express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 from typing import Optional, List, Tuple
-import numpy as np
-from operator import itemgetter
 
 from syne_tune.optimizer.schedulers.synchronous.hyperband_bracket import (
     SynchronousBracket,
-    SlotInRung,
     get_top_list,
 )
 
@@ -90,16 +87,6 @@ class DifferentialEvolutionHyperbandBracket(SynchronousBracket):
         rung, _ = self._rungs[self.current_rung - 1]
         new_len = len(self._current_rung_and_level()[0])
         return get_top_list(rung, new_len)
-
-    def rung_index_for_level(self, level: int) -> Optional[int]:
-        try:
-            return next(
-                i
-                for i, (_, rung_level) in enumerate(self._rungs)
-                if rung_level == level
-            )
-        except StopIteration:
-            return None
 
     def _promote_trials_at_rung_complete(self):
         pass
